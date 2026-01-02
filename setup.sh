@@ -39,10 +39,15 @@ include () {
 }
 
 for root_dep in $ROOT_DEPS; do
-    cp /usr/local/GL/lib/$root_dep .
+    #cp /usr/local/GL/lib/$root_dep .
+    #cp /opt/X11/lib/$root_dep .
+    cp /usr/local/opt/mesa/lib/$root_dep .
     echo " including packaging $root_dep ($(sizeof $root_dep))"
     include $root_dep
 done
+
+mkdir "$APPDIR/Contents/Framework"
+cp -R /opt/X11/lib/ $APPDIR/Contents/Framework #$APPDIR Maybe later
 
 pwd
 
@@ -57,7 +62,8 @@ cd ../MacOS
 cp -r "$SUPERDIR"/Cubyz/assets assets
 cp -r "$SUPERDIR"/Cubyz/launchConfig.zon "$APPDIR/Contents/MacOS"
 cp -r "$SUPERDIR"/Cubyz/settings.zig.zon settings.zig.zon
-cp "$SUPERDIR"/Cubyz/zig-out/bin/Cubyz Cubyzig
+#cp "$SUPERDIR"/Cubyz/zig-out/bin/Cubyz Cubyzig
+cp "$SUPERDIR"/Cubyz/zig-out/bin/Cubyz.app/Contents/MacOS/Cubyz Cubyzig
 
 for dep in $DEPS; do
     args -change $dep "@rpath/`basename $dep`" Cubyzig

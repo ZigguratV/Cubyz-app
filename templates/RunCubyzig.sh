@@ -13,7 +13,7 @@ if ! open -a XQuartz.app; then
     HAS_DEPS=0
 fi
 
-if ! [ -f /opt/homebrew/opt/llvm/lib/libLLVM.dylib ]; then
+if ! [ -f /usr/local/opt/llvm/lib/libLLVM.dylib ]; then
     HAS_DEPS=0
 fi
 

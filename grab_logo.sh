@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cp ../Cubyz/logo.png .
+cp ../Cubyz/assets/cubyz/logo.png .
 sh make_icns.sh logo.png
 
