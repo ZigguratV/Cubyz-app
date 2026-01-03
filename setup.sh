@@ -9,7 +9,7 @@ echo "SUPER $SUPERDIR"
 mkdir -p Cubyz.app/Contents/Library
 cd Cubyz.app/Contents/Library
 
-ROOT_DEPS="libGL.1.dylib libglapi.0.dylib"
+ROOT_DEPS="libGL.1.dylib libglapi.0.dylib libgallium-25.3.2.dylib"
 
 sizeof () {
     du -schH $1 | grep total | awk -F'\t' '{print $1}'
@@ -40,14 +40,12 @@ include () {
 
 for root_dep in $ROOT_DEPS; do
     #cp /usr/local/GL/lib/$root_dep .
-    #cp /opt/X11/lib/$root_dep .
     cp /usr/local/opt/mesa/lib/$root_dep .
     echo " including packaging $root_dep ($(sizeof $root_dep))"
     include $root_dep
 done
 
-mkdir "$APPDIR/Contents/Framework"
-cp -R /opt/X11/lib/ $APPDIR/Contents/Framework #$APPDIR Maybe later
+cp -R /opt/X11/lib/ $APPDIR/Contents/Library
 
 pwd
 
