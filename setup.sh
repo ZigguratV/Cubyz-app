@@ -9,7 +9,7 @@ echo "SUPER $SUPERDIR"
 mkdir -p Cubyz.app/Contents/Library
 cd Cubyz.app/Contents/Library
 
-ROOT_DEPS="libGL.1.dylib libglapi.0.dylib libgallium-25.3.2.dylib"
+ROOT_DEPS="libGL.1.dylib libglapi.0.dylib libgallium-*.dylib"
 
 sizeof () {
     du -schH $1 | grep total | awk -F'\t' '{print $1}'
