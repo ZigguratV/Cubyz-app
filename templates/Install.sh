@@ -29,7 +29,7 @@ echo -n "Do you need to install the dependency LLVM? (yes/no) "
 read r
 case $r in
     Yes | yes | y | Y )
-        brew install llvm;;
+        brew install llvm@21;;
     * )
         echo "Not installing"
         exit;;

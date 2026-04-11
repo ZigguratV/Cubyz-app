@@ -11,6 +11,7 @@ cd Cubyz.app/Contents/Library
 
 #ROOT_DEPS="libGL.1.dylib libgallium-*.dylib"
 ROOT_DEPS="libGL.1.dylib libgallium-*.dylib" #"more random stuff"
+#ROOT_DEPS_LLVM="libLLVM.dylib"
 #libglapi.0.dylib
 
 sizeof () {
@@ -42,14 +43,26 @@ include () {
 
 for root_dep in $ROOT_DEPS; do
     #cp /usr/local/GL/lib/$root_dep .
-    cp /usr/local/opt/mesa/lib/$root_dep .
+    cp /usr/local/Cellar/mesa@25/*/lib/$root_dep .
+    #cp /opt/X11/lib/$root_dep .
     echo " including packaging $root_dep ($(sizeof $root_dep))"
     include $root_dep
 done
 
-cp -R /usr/local/opt/mesa/lib/ $APPDIR/Contents/Library #is this enough?
+#for root_dep in $ROOT_DEPS_LLVM; do
+#    cp /usr/local/Cellar/llvm@21/*/lib/$root_dep .
+#    echo " including packaging $root_dep ($(sizeof $root_dep))"
+#    include $root_dep
+#done
+
+#cp -R /usr/local/opt/mesa/lib/ $APPDIR/Contents/Library #In my case it has 26 version of mesa
 #Current homebrew mesa is built with llvm 21
-cp -R /usr/local/Cellar/llvm@21/21.1.8/lib/*.dylib $APPDIR/Contents/Library
+
+#cp -R /usr/local/Cellar/llvm@21/*/lib/*.dylib $APPDIR/Contents/Library
+
+cp -R /usr/local/Cellar/llvm@21/*/lib/*.dylib $APPDIR/Contents/Library
+cp -R /usr/local/Cellar/mesa@25/*/lib/*.dylib $APPDIR/Contents/Library
+cp -R /opt/X11/lib/ $APPDIR/Contents/Library
 
 pwd
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#todo: check llvm and mesa compatible versions!
 cd "$(dirname "$0")"
 
 HAS_DEPS=1
