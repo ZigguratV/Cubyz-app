@@ -60,8 +60,10 @@ done
 
 #cp -R /usr/local/Cellar/llvm@21/*/lib/*.dylib $APPDIR/Contents/Library
 
-cp -R /usr/local/Cellar/llvm@21/*/lib/*.dylib $APPDIR/Contents/Library
-cp -R /usr/local/Cellar/mesa@25/*/lib/*.dylib $APPDIR/Contents/Library
+#cp -R /usr/local/Cellar/llvm@21/*/lib/*.dylib $APPDIR/Contents/Library
+#cp -R /usr/local/Cellar/mesa@25/*/lib/*.dylib $APPDIR/Contents/Library
+cp -R /usr/local/Cellar/mesa@25/*/lib/ $APPDIR/Contents/Library
+cp -R /usr/local/Cellar/llvm@21/*/lib/ $APPDIR/Contents/Library
 cp -R /opt/X11/lib/ $APPDIR/Contents/Library
 
 pwd
