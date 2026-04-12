@@ -9,10 +9,7 @@ echo "SUPER $SUPERDIR"
 mkdir -p Cubyz.app/Contents/Library
 cd Cubyz.app/Contents/Library
 
-#ROOT_DEPS="libGL.1.dylib libgallium-*.dylib"
 ROOT_DEPS="libGL.1.dylib libgallium-*.dylib" #"more random stuff"
-#ROOT_DEPS_LLVM="libLLVM.dylib"
-#libglapi.0.dylib
 
 sizeof () {
     du -schH $1 | grep total | awk -F'\t' '{print $1}'
@@ -44,27 +41,9 @@ include () {
 for root_dep in $ROOT_DEPS; do
     #cp /usr/local/GL/lib/$root_dep .
     cp /usr/local/Cellar/mesa@25/*/lib/$root_dep .
-    #cp /opt/X11/lib/$root_dep .
     echo " including packaging $root_dep ($(sizeof $root_dep))"
     include $root_dep
 done
-
-#for root_dep in $ROOT_DEPS_LLVM; do
-#    cp /usr/local/Cellar/llvm@21/*/lib/$root_dep .
-#    echo " including packaging $root_dep ($(sizeof $root_dep))"
-#    include $root_dep
-#done
-
-#cp -R /usr/local/opt/mesa/lib/ $APPDIR/Contents/Library #In my case it has 26 version of mesa
-#Current homebrew mesa is built with llvm 21
-
-#cp -R /usr/local/Cellar/llvm@21/*/lib/*.dylib $APPDIR/Contents/Library
-
-#cp -R /usr/local/Cellar/llvm@21/*/lib/*.dylib $APPDIR/Contents/Library
-#cp -R /usr/local/Cellar/mesa@25/*/lib/*.dylib $APPDIR/Contents/Library
-cp -R /usr/local/Cellar/mesa@25/*/lib/ $APPDIR/Contents/Library
-cp -R /usr/local/Cellar/llvm@21/*/lib/ $APPDIR/Contents/Library
-cp -R /opt/X11/lib/ $APPDIR/Contents/Library
 
 pwd
 
@@ -78,8 +57,6 @@ cd ../MacOS
 
 cp -r "$SUPERDIR"/Cubyz/assets assets
 cp -r "$SUPERDIR"/Cubyz/launchConfig.zon "$APPDIR/Contents/MacOS"
-#cp -r "$SUPERDIR"/Cubyz/settings.zig.zon settings.zig.zon
-#cp "$SUPERDIR"/Cubyz/zig-out/bin/Cubyz Cubyzig
 cp "$SUPERDIR"/Cubyz/zig-out/bin/Cubyz.app/Contents/MacOS/Cubyz Cubyzig
 
 for dep in $DEPS; do
