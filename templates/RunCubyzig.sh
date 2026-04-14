@@ -25,5 +25,8 @@ fi
 #Current homebrew mesa is built with llvm 21
 
 
-DYLD_LIBRARY_PATH='../Library:/usr/local/Cellar/llvm@21/*/lib/:/usr/local/Cellar/mesa@25/*/lib/' GALLIUM_DRIVER=llvmpipe MESA_GL_VERSION_OVERRIDE=4.6 MESA_GLSL_VERSION_OVERRIDE=460 MESA_LOADER_DRIVER_OVERRIDE= LP_NUM_THREADS=4 ./Cubyzig 2>&1 >./trace
+DYLD_LIBRARY_PATH='../Library:/usr/local/Cellar/llvm@21/*/lib/:/usr/local/Cellar/mesa@25/*/lib/:/usr/local/Cellar/libx11/1.8.13/lib/' GALLIUM_DRIVER=llvmpipe MESA_GL_VERSION_OVERRIDE=4.6 MESA_GLSL_VERSION_OVERRIDE=460 MESA_LOADER_DRIVER_OVERRIDE= LP_NUM_THREADS=4 ./Cubyzig 2>&1 >./trace
+
+#DYLD_LIBRARY_PATH='../Library:/usr/local/Cellar/llvm@21/*/lib/:/usr/local/Cellar/mesa@25/*/lib/:/usr/X11/lib'
+
 # DYLD_LIBRARY_PATH=../Library GALLIUM_DRIVER=zink MESA_GL_VERSION_OVERRIDE=4.6 MESA_LOADER_DRIVER_OVERRIDE= LP_NUM_THREADS= ./Cubyzig
