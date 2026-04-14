@@ -9,7 +9,8 @@ echo "SUPER $SUPERDIR"
 mkdir -p Cubyz.app/Contents/Library
 cd Cubyz.app/Contents/Library
 
-ROOT_DEPS="libGL.1.dylib libgallium-*.dylib" #"more random stuff"
+#ROOT_DEPS="libGL.1.dylib libgallium-*.dylib" #"more random stuff"
+ROOT_DEPS=""
 
 sizeof () {
     du -schH $1 | grep total | awk -F'\t' '{print $1}'
@@ -46,6 +47,9 @@ for root_dep in $ROOT_DEPS; do
 done
 
 pwd
+
+#cp -r /usr/local/Cellar/mesa@25/*/lib/ $APPDIR/Contents/Library
+#cp -r /usr/local/Cellar/llvm@21/*/lib/ $APPDIR/Contents/Library
 
 mkdir "$APPDIR/Contents/Resources" "$APPDIR/Contents/MacOS"
 cp "$ROOTDIR/templates/Info.plist" "$APPDIR/Contents"
